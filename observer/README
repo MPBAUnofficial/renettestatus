@@ -1,0 +1,5 @@
+STATUS CODEs:
+0: operational
+1: degraded performance
+2: random errors
+3: service outage

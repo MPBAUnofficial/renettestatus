@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>status</title>
+</head>
+<body>
+<h1>{{ global_status.message }}</h1>
+{% for log in latest_logs %}
+    <h3>{{ log.target.name }} : {{ log.status_message }}</h3>
+{% endfor %}
+</body>
+</html>

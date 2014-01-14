@@ -1,0 +1,54 @@
+[
+    {
+        "model": "observer.StatusMessages",
+        "pk": 1,
+        "fields": {
+            "name": "Default status messages"
+        }
+    },
+    {
+        "model": "observer.StatusMessage",
+        "pk": 1,
+        "fields": {
+            "messages_group": 1,
+            "message": "Service operational",
+            "code": 0
+        }
+    },
+    {
+        "model": "observer.StatusMessage",
+        "pk": 2,
+        "fields": {
+            "messages_group": 1,
+            "message": "Degraded performance",
+            "code": 1
+        }
+    },
+    {
+        "model": "observer.StatusMessage",
+        "pk": 3,
+        "fields": {
+            "messages_group": 1,
+            "message": "Random errors",
+            "code": 2
+        }
+    },
+    {
+        "model": "observer.StatusMessage",
+        "pk": 4,
+        "fields": {
+            "messages_group": 1,
+            "message": "Major outage",
+            "code": 3
+        }
+    },
+    {
+        "model": "observer.GlobalStatusMessage",
+        "pk": 1,
+        "fields": {
+            "code": 3,
+            "message": "No data so far...",
+            "time": "2014-01-13T20:42:10.835Z"
+        }
+    }
+]

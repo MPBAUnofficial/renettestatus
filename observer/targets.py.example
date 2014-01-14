@@ -1,0 +1,59 @@
+from shamstatus.settings import REQUESTS_TIMEOUT
+import requests
+from models import Target, StatusMessages
+
+
+class ObserverTarget(object):
+    def __init__(self, name, url, method='GET', params=None, data=None,
+                 timeout=REQUESTS_TIMEOUT):
+        if method.lower() not in \
+                ('get', 'post', 'head', 'put', 'delete', 'options', 'patch'):
+            raise ValueError('{0} is not a valid method.'.format(method))
+        self.name = name
+        self.url = url
+        self.method = method.upper()
+        self.params = params
+        self.data = data
+        self.timeout = timeout
+
+    def build_request(self):
+        kwargs = {}
+        if self.params:
+            kwargs['params'] = self.params
+        if self.data:
+            kwargs['data'] = self.data
+        if self.timeout:
+            kwargs['timeout'] = self.timeout
+
+        # must return a callable! either using a lambda
+        # or lower_level class `requests.Request`
+        return lambda: requests.request(self.method, self.url, **kwargs)
+
+    def status(self):
+        """
+        return the status code of the response,
+        or None if the request timed out.
+        """
+        req = self.build_request()
+        try:
+            r = req()
+        except requests.Timeout, requests.ConnectionError:
+            return None
+        return r.status_code
+
+    def get_target_model(self):
+        try:
+            target = Target.objects.filter(name=self.name)[0]
+        except IndexError:
+            target = Target(name=self.name, url=self.url,  method=self.method,
+                            status_messages=StatusMessages.objects.get(pk=1))
+            target.save()
+        return target
+
+
+TARGETS_LIST = [ObserverTarget('good', 'http://localhost:5000/good'),
+                ObserverTarget('bad', 'http://localhost:5000/bad'),
+                ObserverTarget('boh', 'http://localhost:5000/boh'),
+                ObserverTarget('timeboh', 'http://localhost:5000/timeboh')]
+
+

@@ -4,12 +4,6 @@ from .targets import TARGETS_LIST
 from .models import RequestLog
 from .utils import update_status
 
-@shared_task
-def celery_test(name):
-    from time import sleep
-    sleep(5)
-    return "hello, " + name
-
 
 @shared_task
 def investigate_error(target, level=0, force_new_global_status=False):

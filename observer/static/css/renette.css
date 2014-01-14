@@ -1,0 +1,75 @@
+body {
+    background: #eee;
+}
+
+div.statuscontainer {
+    -webkit-box-shadow:  10px 10px 5px #333;
+    -moz-box-shadow:  10px 10px 5px #333;
+    box-shadow:  0px 0px 10px #333;
+
+    background-color: #ffffff;
+    padding: 30px 10px;
+}
+
+div.global-status {
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+a.history {
+    font-size: 15px;
+    text-decoration: none;
+    text-align: right;
+}
+
+div.global-status.code0 {
+    background-color: rgba(191, 237, 210, 1);
+    border: 1px solid rgba(0, 95, 39, 1);
+}
+
+div.global-status.code0 h1,
+span.target-status.code0 {
+    color: rgba(0, 95, 39, 1);
+}
+
+div.global-status.code1, div.global-status.code2 {
+    background-color: rgba(255, 234, 161, 1);
+    border: 1px solid rgba(168, 113, 0, 1);
+}
+
+div.global-status.code1 h1, div.global-status.code2 h1,
+span.target-status.code1, span.target-status.code2 {
+    color: rgba(168, 113, 0, 1);
+}
+
+div.global-status.code3 {
+    background-color: rgba(255, 153, 153, 1);
+    border: 1px solid rgba(146, 0, 0, 1);
+}
+
+div.global-status.code3 h1,
+span.target-status.code3 {
+    color: rgba(146, 0, 0, 1);
+}
+
+div.pseudo-topbar img {
+    max-height: 50px;
+}
+
+p.service-status {
+    font-size: 20px;
+}
+
+span.target-name {
+    text-align: left;
+}
+
+span.target-status {
+    text-align: right;
+    /*margin-left: 5em;*/
+    position: absolute;
+    left: 20em;
+}
+

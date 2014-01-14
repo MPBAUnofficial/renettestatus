@@ -32,13 +32,14 @@ class ObserverTarget(object):
     def status(self):
         """
         return the status code of the response,
-        or None if the request timed out.
+        or 500 if the request encounters errors.
         """
         req = self.build_request()
+        # noinspection PyBroadException
         try:
             r = req()
-        except requests.Timeout, requests.ConnectionError:
-            return None
+        except:
+            return 500
         return r.status_code
 
     def get_target_model(self):

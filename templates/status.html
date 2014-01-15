@@ -1,38 +1,12 @@
+{% extends "base.html" %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
-
-    <!-- Basic Page Needs
-  ================================================== -->
-    <meta charset="utf-8">
-    <title>Renette status</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Mobile Specific Metas
-  ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-  ================================================== -->
-    <link rel="stylesheet" href="{% static "css/base.css" %}">
-    <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
-    <link rel="stylesheet" href="{% static "css/layout.css" %}">
-    <link rel="stylesheet" href="{% static "css/renette.css" %}">
-
-</head>
-<body>
-<div class="container">
+{% block container %}
     <div class="twelve columns statuscontainer offset-by-two" style="margin-top:40px">
         <div class="ten columns">
             <div class="pseudo-topbar">
                 <img src="{% static "img/logo_renette.png" %}">
             </div>
-        <hr>
+            <hr>
             <br/>
             <div class="global-status code{{ global_status.code }}">
                 <h1>{{ global_status.message }}</h1>
@@ -40,12 +14,10 @@
             </div>
             {% for log in latest_logs %}
                 <p class="service-status">
-                <span class="target-name code{{ log.status_code }}">{{ log.target.name }}</span>
-                <span class="target-status code{{ log.status_code }}">{{ log.status_message }}</span>
+                    <span class="target-name code{{ log.status_code }}">{{ log.target.name }}</span>
+                    <span class="target-status code{{ log.status_code }}">{{ log.status_message }}</span>
                 </p>
             {% endfor %}
         </div>
     </div>
-</div>
-</body>
-</html>
+{% endblock %}

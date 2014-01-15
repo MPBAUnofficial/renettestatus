@@ -22,6 +22,7 @@ SYSTEM_ERROR_MESSAGES = ['All systems operational',
                          'Some services are experiencing issues',
                          'Major outage']
 HIGHER_ERROR_CODE = 3
+RENETTE_ADMINS = 'dallagiac@fbk.eu'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os

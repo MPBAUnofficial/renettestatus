@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block container %}
+    {% for status in statuses %}
+        <p> {{ status }} </p>
+    {% endfor %}
+{% endblock %}

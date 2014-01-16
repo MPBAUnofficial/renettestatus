@@ -24,6 +24,13 @@ SYSTEM_ERROR_MESSAGES = ['All systems operational',
 HIGHER_ERROR_CODE = 3
 RENETTE_ADMINS = 'dallagiac@fbk.eu'
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'datcache',
+    }
+}
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))

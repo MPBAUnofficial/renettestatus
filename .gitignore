@@ -3,6 +3,7 @@ targets.py
 *.sqlite3
 *.db
 *.swp
+celerybeat-schedule
 
 # PyCharm
 .idea/*

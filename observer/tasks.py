@@ -3,6 +3,7 @@ from __future__ import absolute_import
 from celery import shared_task
 from celery.task import periodic_task
 from celery.schedules import crontab
+from django.conf import settings
 from .targets import TARGETS_LIST
 from .models import RequestLog, GlobalStatusMessage
 from shamstatus.settings import SYSTEM_ERROR_MESSAGES, RENETTE_ADMINS
@@ -47,7 +48,7 @@ def update_global_status(force_new=False):
             'Renette\'s status changed to {0}'
             .format(SYSTEM_ERROR_MESSAGES[global_status_code]),
             'Baci e abbracci',
-            'statusbot@renette.fbk.eu',
+            settings.EMAIL_HOST_USER,
             RENETTE_ADMINS,
             fail_silently=True
         )
@@ -93,3 +94,8 @@ def global_status_periodic():
     # maybe it would be a better idea to set 'periodic_task' on the
     # global_status task?
     global_status.delay()
+
+
+@periodic_task(run_every=crontab(minute=0, hour=0))
+def daily_check():
+    update_global_status.delay(force_new=True)

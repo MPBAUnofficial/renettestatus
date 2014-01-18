@@ -45,9 +45,9 @@ def update_global_status(force_new=False):
             message=SYSTEM_ERROR_MESSAGES[global_status_code]
         )
         send_mail(
-            'Renette\'s status changed to {0}'
+            'Renette status notification',
+            'Renette status changed to {0}\nTante belle cose'
             .format(SYSTEM_ERROR_MESSAGES[global_status_code]),
-            'Baci e abbracci',
             settings.EMAIL_HOST_USER,
             RENETTE_ADMINS,
             fail_silently=True

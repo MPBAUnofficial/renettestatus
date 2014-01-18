@@ -14,8 +14,7 @@ class GlobalStatusMessage(models.Model):
 
     def get_readable_time(self):
         return '{t.day:02d}/{t.month:02d}/{t.year:02d} -' \
-               ' {t.hour:02d}:{t.minute:02d}:{t.second:02d}'\
-            .format(t=self.time)
+               ' {t.hour:02d}:{t.minute:02d}'.format(t=self.time)
 
     def __unicode__(self):
         return '{0}: {1}'.format(self.time, self.message)
